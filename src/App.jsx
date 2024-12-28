@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css';
 import { MantineProvider, AppShell, Container, Stack, Text, Group } from '@mantine/core';
 import { TotalBudget } from './components/Budget/TotalBudget';
-import { BudgetBurndown } from './components/Budget/BudgetBurndown';
 import { BudgetAnalysis } from './components/Budget/BudgetAnalysis';
 import { ExpensesList } from './components/Expenses/ExpensesList';
 import { BudgetProvider } from './contexts/BudgetContext';
@@ -29,7 +28,6 @@ export default function App() {
             <Stack gap="xl">
               <TotalBudget />
               <BudgetAnalysis />
-              <BudgetBurndown />
               <ExpensesList />
             </Stack>
           </Container>

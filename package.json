@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
-    "@mantine/charts": "^7.14.3",
     "@mantine/core": "^7.4.0",
     "@mantine/hooks": "^7.4.0",
+    "@mantine/charts": "^7.4.0",
     "@tabler/icons-react": "^2.45.0",
+    "d3": "^7.8.5",
+    "d3-shape": "^3.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recharts": "^2.13.3"

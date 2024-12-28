@@ -1,9 +1,18 @@
-import { Stack, Paper, Text, Button, Group, ActionIcon, Badge, Grid } from '@mantine/core';
-import { IconPlus, IconTrash, IconEdit } from '@tabler/icons-react';
-import { useBudget } from '../../contexts/BudgetContext';
-import { ExpenseModal } from './ExpenseModal';
-import { useAppColors } from '../../hooks/useAppColors';
+import {
+  ActionIcon,
+  Badge,
+  Button,
+  Grid,
+  Group,
+  Paper,
+  Stack,
+  Text,
+} from '@mantine/core';
+import { IconEdit, IconPlus, IconTrash } from '@tabler/icons-react';
 import { useState } from 'react';
+import { useBudget } from '../../contexts/BudgetContext';
+import { useAppColors } from '../../hooks/useAppColors';
+import { ExpenseModal } from './ExpenseModal';
 
 export function ExpensesList() {
   const { expenses, removeExpense } = useBudget();
@@ -12,7 +21,7 @@ export function ExpensesList() {
   const [expenseType, setExpenseType] = useState('fixed');
   const [editExpense, setEditExpense] = useState(null);
 
-  const handleAddExpense = (type) => {
+  const handleAddExpense = type => {
     setExpenseType(type);
     setEditExpense(null);
     setModalOpen(true);
@@ -30,27 +39,29 @@ export function ExpensesList() {
 
   const renderExpenseList = (expensesList, type) => (
     <Stack gap="sm">
-      {expensesList.map((expense) => (
-        <Paper 
-          key={expense.id} 
-          shadow="xs" 
-          p="sm" 
+      {expensesList.map(expense => (
+        <Paper
+          key={expense.id}
+          shadow="xs"
+          p="sm"
           withBorder
           style={{
             backgroundColor: getColor('surface'),
-            borderColor: getColor('border')
+            borderColor: getColor('border'),
           }}
         >
           <Group justify="space-between" wrap="nowrap">
             <Stack gap={4}>
               <Group gap="xs">
-                <Text size="sm" fw={500}>{expense.name}</Text>
-                <Badge 
-                  size="sm" 
+                <Text size="sm" fw={500}>
+                  {expense.name}
+                </Text>
+                <Badge
+                  size="sm"
                   variant="filled"
-                  style={{ 
+                  style={{
                     backgroundColor: getCategoryColor(expense.category, 0.8),
-                    color: getColor('surface')
+                    color: getColor('surface'),
                   }}
                 >
                   {expense.category}
@@ -61,15 +72,15 @@ export function ExpensesList() {
               </Text>
             </Stack>
             <Group gap="xs">
-              <ActionIcon 
-                variant="subtle" 
+              <ActionIcon
+                variant="subtle"
                 color="blue"
                 onClick={() => handleEditExpense(expense, type)}
               >
                 <IconEdit size={16} />
               </ActionIcon>
-              <ActionIcon 
-                variant="subtle" 
+              <ActionIcon
+                variant="subtle"
                 color="red"
                 onClick={() => handleRemoveExpense(expense.id, type)}
               >
@@ -91,14 +102,21 @@ export function ExpensesList() {
     <>
       <Grid gutter="xl">
         <Grid.Col span={{ base: 12, sm: 6 }}>
-          <Paper p="md" style={{ backgroundColor: getCategoryColor('primary', 0.03) }}>
+          <Paper
+            p="md"
+            style={{ backgroundColor: getCategoryColor('primary', 0.05) }}
+          >
             <Stack gap="md">
               <Group justify="space-between">
                 <Stack gap={4}>
-                  <Text size="xl" fw={500}>Fixed Expenses</Text>
-                  <Text size="sm" c="dimmed">Regular monthly payments</Text>
+                  <Text size="xl" fw={500}>
+                    Fixed Expenses
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    Regular monthly payments
+                  </Text>
                 </Stack>
-                <Button 
+                <Button
                   leftSection={<IconPlus size={16} />}
                   variant="light"
                   onClick={() => handleAddExpense('fixed')}
@@ -112,14 +130,21 @@ export function ExpensesList() {
         </Grid.Col>
 
         <Grid.Col span={{ base: 12, sm: 6 }}>
-          <Paper p="md" style={{ backgroundColor: getCategoryColor('interactive', 0.03) }}>
+          <Paper
+            p="md"
+            style={{ backgroundColor: getCategoryColor('interactive', 0.05) }}
+          >
             <Stack gap="md">
               <Group justify="space-between">
                 <Stack gap={4}>
-                  <Text size="xl" fw={500}>Variable Expenses</Text>
-                  <Text size="sm" c="dimmed">Fluctuating monthly costs</Text>
+                  <Text size="xl" fw={500}>
+                    Variable Expenses
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    Fluctuating monthly costs
+                  </Text>
                 </Stack>
-                <Button 
+                <Button
                   leftSection={<IconPlus size={16} />}
                   variant="light"
                   onClick={() => handleAddExpense('variable')}
